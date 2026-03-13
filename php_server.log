@@ -1,0 +1,57 @@
+[Fri Mar 13 18:26:53 2026] PHP 8.3.6 Development Server (http://localhost:8000) started
+[Fri Mar 13 18:27:21 2026] [::1]:54876 Accepted
+[Fri Mar 13 18:27:21 2026] [::1]:54876 [200]: GET /install/index.php?step=1
+[Fri Mar 13 18:27:21 2026] [::1]:54876 Closing
+[Fri Mar 13 18:27:22 2026] [::1]:54892 Accepted
+[Fri Mar 13 18:27:22 2026] [::1]:54892 [200]: GET /install/index.php?step=2
+[Fri Mar 13 18:27:22 2026] [::1]:54892 Closing
+[Fri Mar 13 18:32:22 2026] [::1]:38508 Accepted
+[Fri Mar 13 18:32:22 2026] PHP Warning:  require_once(/app/auth.php): Failed to open stream: No such file or directory in /app/login.php on line 2
+[Fri Mar 13 18:32:22 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/app/auth.php' (include_path='.:/usr/share/php') in /app/login.php:2
+Stack trace:
+#0 {main}
+  thrown in /app/login.php on line 2
+[Fri Mar 13 18:32:22 2026] [::1]:38508 [500]: GET /login.php - Uncaught Error: Failed opening required '/app/auth.php' (include_path='.:/usr/share/php') in /app/login.php:2
+Stack trace:
+#0 {main}
+  thrown in /app/login.php on line 2
+[Fri Mar 13 18:32:22 2026] [::1]:38508 Closing
+[Fri Mar 13 18:32:23 2026] [::1]:38520 Accepted
+[Fri Mar 13 18:32:23 2026] PHP Warning:  require_once(/app/user.php): Failed to open stream: No such file or directory in /app/register.php on line 2
+[Fri Mar 13 18:32:23 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/app/user.php' (include_path='.:/usr/share/php') in /app/register.php:2
+Stack trace:
+#0 {main}
+  thrown in /app/register.php on line 2
+[Fri Mar 13 18:32:23 2026] [::1]:38520 [500]: GET /register.php - Uncaught Error: Failed opening required '/app/user.php' (include_path='.:/usr/share/php') in /app/register.php:2
+Stack trace:
+#0 {main}
+  thrown in /app/register.php on line 2
+[Fri Mar 13 18:32:23 2026] [::1]:38520 Closing
+[Fri Mar 13 18:35:34 2026] [::1]:42970 Accepted
+[Fri Mar 13 18:35:34 2026] PHP Warning:  require_once(/app/auth.php): Failed to open stream: No such file or directory in /app/login.php on line 2
+[Fri Mar 13 18:35:34 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/app/auth.php' (include_path='.:/usr/share/php') in /app/login.php:2
+Stack trace:
+#0 {main}
+  thrown in /app/login.php on line 2
+[Fri Mar 13 18:35:34 2026] [::1]:42970 [500]: GET /login.php - Uncaught Error: Failed opening required '/app/auth.php' (include_path='.:/usr/share/php') in /app/login.php:2
+Stack trace:
+#0 {main}
+  thrown in /app/login.php on line 2
+[Fri Mar 13 18:35:34 2026] [::1]:42970 Closing
+[Fri Mar 13 18:35:34 2026] [::1]:42976 Accepted
+[Fri Mar 13 18:35:34 2026] PHP Warning:  require_once(/app/user.php): Failed to open stream: No such file or directory in /app/register.php on line 2
+[Fri Mar 13 18:35:34 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/app/user.php' (include_path='.:/usr/share/php') in /app/register.php:2
+Stack trace:
+#0 {main}
+  thrown in /app/register.php on line 2
+[Fri Mar 13 18:35:34 2026] [::1]:42976 [500]: GET /register.php - Uncaught Error: Failed opening required '/app/user.php' (include_path='.:/usr/share/php') in /app/register.php:2
+Stack trace:
+#0 {main}
+  thrown in /app/register.php on line 2
+[Fri Mar 13 18:35:34 2026] [::1]:42976 Closing
+[Fri Mar 13 18:38:45 2026] [::1]:46330 Accepted
+[Fri Mar 13 18:38:45 2026] [::1]:46330 [200]: GET /login.php
+[Fri Mar 13 18:38:45 2026] [::1]:46330 Closing
+[Fri Mar 13 18:38:45 2026] [::1]:46334 Accepted
+[Fri Mar 13 18:38:45 2026] [::1]:46334 [200]: GET /register.php
+[Fri Mar 13 18:38:45 2026] [::1]:46334 Closing
