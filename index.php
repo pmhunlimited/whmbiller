@@ -7,7 +7,13 @@ require_once __DIR__ . '/includes/config.php';
 
 // Host Validation for Resellers
 $host = $_SERVER['HTTP_HOST'];
-$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+try {
+    $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+} catch (mysqli_sql_exception $e) {
+    // If DB connection fails (e.g. after upload but before install), redirect to installer
+    header('Location: /install/');
+    exit;
+}
 $stmt = $db->prepare("SELECT user_id FROM reseller_settings WHERE custom_domain = ?");
 $stmt->bind_param("s", $host);
 $stmt->execute();

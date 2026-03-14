@@ -4,3 +4,4 @@ php_server.log
 *.log
 assets/invoices/*.txt
 assets/invoices/*.pdf
+includes/config.php
