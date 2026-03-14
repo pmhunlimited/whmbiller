@@ -57,7 +57,35 @@ CREATE TABLE IF NOT EXISTS `products` (
     `price` DECIMAL(15, 2) NOT NULL,
     `recurring_period` ENUM('monthly', 'quarterly', 'semi_annually', 'annually', 'biennially', 'triennially') DEFAULT 'monthly',
     `type` VARCHAR(50) NOT NULL, -- e.g., 'hosting', 'domain', 'vps'
+    `module_settings` TEXT, -- JSON settings for WHM/CloudLinux
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS `servers` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(100) NOT NULL,
+    `hostname` VARCHAR(255) NOT NULL,
+    `ip_address` VARCHAR(45),
+    `username` VARCHAR(50) NOT NULL,
+    `api_token` TEXT NOT NULL,
+    `type` VARCHAR(50) DEFAULT 'whm',
+    `status` ENUM('active', 'disabled') DEFAULT 'active'
+);
+
+CREATE TABLE IF NOT EXISTS `user_services` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `user_id` INT NOT NULL,
+    `product_id` INT NOT NULL,
+    `server_id` INT,
+    `domain` VARCHAR(255),
+    `username` VARCHAR(50),
+    `password` VARCHAR(255),
+    `status` ENUM('active', 'suspended', 'terminated', 'pending') DEFAULT 'pending',
+    `next_due_date` DATE,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
+    FOREIGN KEY (`product_id`) REFERENCES `products`(`id`),
+    FOREIGN KEY (`server_id`) REFERENCES `servers`(`id`)
 );
 
 CREATE TABLE IF NOT EXISTS `invoices` (

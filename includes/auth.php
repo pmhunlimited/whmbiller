@@ -12,7 +12,7 @@ class Auth {
         $this->security = new Security();
     }
 
-    public function login($username, $password) {
+    public function login($username, $password, $admin_only = false) {
         $ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
 
         if ($this->security->isIPBlocked($ip)) {
@@ -27,13 +27,18 @@ class Auth {
             return "Access from your country is restricted.";
         }
 
-        $stmt = $this->db->prepare("SELECT id, username, password, role, status FROM users WHERE username = ?");
+        $stmt = $this->db->prepare("SELECT id, username, email, password, role, status FROM users WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $res = $stmt->get_result();
 
         if ($res->num_rows === 1) {
             $user = $res->fetch_assoc();
+
+            if ($admin_only && !in_array($user['role'], ['admin', 'staff'])) {
+                return "Access denied. This portal is for administrative staff only.";
+            }
+
             if (password_verify($password, $user['password'])) {
                 if ($user['role'] === 'admin') {
                     // Check if IP is recognized

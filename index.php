@@ -38,6 +38,11 @@ if ($auth->isLoggedIn()) {
         header('Location: /client/index');
     }
 } else {
-    header('Location: /login');
+    // If accessing via /admin path but not logged in
+    if (strpos($_SERVER['REQUEST_URI'], '/admin') !== false) {
+        header('Location: /admin/authorize');
+    } else {
+        header('Location: /login');
+    }
 }
 exit;

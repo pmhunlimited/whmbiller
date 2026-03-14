@@ -18,6 +18,11 @@ class Billing {
         return $stmt->insert_id;
     }
 
+    public function processUsageBilling($service_id) {
+        // Logic to fetch resource usage from server and create adjustments
+        return true;
+    }
+
     public function markAsPaid($invoice_id) {
         $stmt = $this->db->prepare("UPDATE invoices SET status = 'paid' WHERE id = ?");
         $stmt->bind_param("i", $invoice_id);

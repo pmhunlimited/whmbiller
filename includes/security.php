@@ -87,8 +87,8 @@ class Security {
     }
 
     private function handleSuccessfulLogin($username, $ip) {
-        // Increment successful sessions for IP whitelisting
-        $stmt = $this->db->prepare("INSERT INTO ip_protection (ip_address, successful_sessions, failed_attempts) VALUES (?, 1, 0) ON DUPLICATE KEY UPDATE successful_sessions = successful_sessions + 1, failed_attempts = 0");
+        // Increment successful sessions and unban IP if it was blocked
+        $stmt = $this->db->prepare("INSERT INTO ip_protection (ip_address, successful_sessions, failed_attempts, status, block_until) VALUES (?, 1, 0, 'none', NULL) ON DUPLICATE KEY UPDATE successful_sessions = successful_sessions + 1, failed_attempts = 0, status = IF(status = 'blacklist', 'none', status), block_until = NULL");
         $stmt->bind_param("s", $ip);
         $stmt->execute();
 

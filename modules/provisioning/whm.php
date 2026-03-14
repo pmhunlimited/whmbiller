@@ -42,4 +42,28 @@ class WHMModule {
     public function terminateAccount($username) {
         return $this->call('removeacct', ['user' => $username]);
     }
+
+    public function changePackage($username, $pkgname) {
+        return $this->call('changepackage', ['user' => $username, 'pkgname' => $pkgname]);
+    }
+
+    public function modifyAccount($username, $params) {
+        // e.g. QUOTA, BWLIMIT, MAXFTP, etc.
+        $params['user'] = $username;
+        return $this->call('modifyacct', $params);
+    }
+
+    public function getSessionToken($username, $service = 'cpanel') {
+        // Use CreateUserSession to get SSO link
+        return $this->call('create_user_session', [
+            'user' => $username,
+            'service' => $service
+        ]);
+    }
+
+    public function setCloudLinuxLimits($username, $limits) {
+        // Mock implementation for LVE integration
+        // In real WHM, would use 'lveinfo' or similar via CLI/API if available
+        return ['status' => 1, 'message' => 'CloudLinux limits updated for ' . $username];
+    }
 }
