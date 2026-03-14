@@ -6,7 +6,7 @@ $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $res = $auth->login($_POST['username'], $_POST['password']);
     if ($res === true) {
-        header('Location: /user/index');
+        header('Location: /client/index');
         exit;
     } else {
         $error = $res;

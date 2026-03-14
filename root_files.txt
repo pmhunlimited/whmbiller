@@ -1,0 +1,17 @@
+admin/
+assets/
+client/
+composer.json
+composer.lock
+cron/
+includes/
+index.php
+install/
+login.php
+logout.php
+modules/
+php_server.log
+register.php
+root_files.txt
+templates/
+vendor/

@@ -44,7 +44,7 @@ $txs_res = $txs->get_result();
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Billing & Credits</h2>
-        <a href="/user/index" class="btn btn-secondary">Back to Dashboard</a>
+        <a href="/client/index" class="btn btn-secondary">Back to Dashboard</a>
     </div>
 
     <?php if(isset($msg)): ?>

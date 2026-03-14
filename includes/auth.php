@@ -35,6 +35,14 @@ class Auth {
         if ($res->num_rows === 1) {
             $user = $res->fetch_assoc();
             if (password_verify($password, $user['password'])) {
+                if ($user['role'] === 'admin') {
+                    // Check if IP is recognized
+                    if (!$this->security->isWhitelisted($ip)) {
+                        require_once __DIR__ . '/email.php';
+                        Email::send($user['email'], 'Admin Login Notification', "A successful login to the admin panel was detected from a new IP address: $ip.");
+                    }
+                }
+
                 $this->security->logLoginAttempt($username, $ip, 'success');
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];

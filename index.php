@@ -29,5 +29,15 @@ if ($host !== $main_domain && !$is_reseller_domain) {
 }
 
 // Proceed to normal routing
-header('Location: /user/index');
+require_once __DIR__ . '/includes/auth.php';
+$auth = new Auth();
+if ($auth->isLoggedIn()) {
+    if ($auth->isAdmin()) {
+        header('Location: /admin/index');
+    } else {
+        header('Location: /client/index');
+    }
+} else {
+    header('Location: /login');
+}
 exit;

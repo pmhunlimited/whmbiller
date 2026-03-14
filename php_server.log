@@ -55,3 +55,50 @@ Stack trace:
 [Fri Mar 13 18:38:45 2026] [::1]:46334 Accepted
 [Fri Mar 13 18:38:45 2026] [::1]:46334 [200]: GET /register.php
 [Fri Mar 13 18:38:45 2026] [::1]:46334 Closing
+[Sat Mar 14 13:33:50 2026] [::1]:55848 Accepted
+[Sat Mar 14 13:33:50 2026] [::1]:55848 [302]: GET /login
+[Sat Mar 14 13:33:50 2026] [::1]:55848 Closing
+[Sat Mar 14 13:33:50 2026] [::1]:55850 Accepted
+[Sat Mar 14 13:33:50 2026] [::1]:55850 [200]: GET /install/
+[Sat Mar 14 13:33:50 2026] [::1]:55850 Closing
+[Sat Mar 14 13:33:50 2026] [::1]:55860 Accepted
+[Sat Mar 14 13:33:50 2026] PHP Warning:  require_once(/app/includes/config.php): Failed to open stream: No such file or directory in /app/includes/auth.php on line 3
+[Sat Mar 14 13:33:50 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/app/includes/config.php' (include_path='.:/usr/share/php') in /app/includes/auth.php:3
+Stack trace:
+#0 /app/client/index.php(2): require_once()
+#1 {main}
+  thrown in /app/includes/auth.php on line 3
+[Sat Mar 14 13:33:50 2026] [::1]:55860 [500]: GET /client/index - Uncaught Error: Failed opening required '/app/includes/config.php' (include_path='.:/usr/share/php') in /app/includes/auth.php:3
+Stack trace:
+#0 /app/client/index.php(2): require_once()
+#1 {main}
+  thrown in /app/includes/auth.php on line 3
+[Sat Mar 14 13:33:50 2026] [::1]:55860 Closing
+[Sat Mar 14 13:33:50 2026] [::1]:55864 Accepted
+[Sat Mar 14 13:33:50 2026] PHP Warning:  require_once(/app/includes/config.php): Failed to open stream: No such file or directory in /app/includes/auth.php on line 3
+[Sat Mar 14 13:33:50 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/app/includes/config.php' (include_path='.:/usr/share/php') in /app/includes/auth.php:3
+Stack trace:
+#0 /app/admin/index.php(2): require_once()
+#1 {main}
+  thrown in /app/includes/auth.php on line 3
+[Sat Mar 14 13:33:50 2026] [::1]:55864 [500]: GET /admin/security - Uncaught Error: Failed opening required '/app/includes/config.php' (include_path='.:/usr/share/php') in /app/includes/auth.php:3
+Stack trace:
+#0 /app/admin/index.php(2): require_once()
+#1 {main}
+  thrown in /app/includes/auth.php on line 3
+[Sat Mar 14 13:33:50 2026] [::1]:55864 Closing
+[Sat Mar 14 13:36:52 2026] [::1]:47428 Accepted
+[Sat Mar 14 13:36:52 2026] [::1]:47428 [404]: GET /login
+[Sat Mar 14 13:36:52 2026] [::1]:47428 Closing
+[Sat Mar 14 13:36:52 2026] [::1]:47444 Accepted
+[Sat Mar 14 13:36:52 2026] [::1]:47444 [302]: GET /client/index
+[Sat Mar 14 13:36:52 2026] [::1]:47444 Closing
+[Sat Mar 14 13:36:52 2026] [::1]:47448 Accepted
+[Sat Mar 14 13:36:52 2026] [::1]:47448 [404]: GET /login
+[Sat Mar 14 13:36:52 2026] [::1]:47448 Closing
+[Sat Mar 14 13:36:52 2026] [::1]:47460 Accepted
+[Sat Mar 14 13:36:52 2026] [::1]:47460 [302]: GET /admin/security
+[Sat Mar 14 13:36:52 2026] [::1]:47460 Closing
+[Sat Mar 14 13:36:52 2026] [::1]:47464 Accepted
+[Sat Mar 14 13:36:52 2026] [::1]:47464 [404]: GET /login
+[Sat Mar 14 13:36:52 2026] [::1]:47464 Closing

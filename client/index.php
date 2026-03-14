@@ -39,7 +39,7 @@ $invoices_res = $invoices->get_result();
     <div class="container-fluid">
         <a class="navbar-brand fw-bold text-primary" href="#">WHMBiller</a>
         <div class="ms-auto d-flex align-items-center">
-            <a href="/user/profile" class="me-3 text-dark text-decoration-none"><i class="bi bi-person-circle"></i> Profile</a>
+            <a href="/client/profile" class="me-3 text-dark text-decoration-none"><i class="bi bi-person-circle"></i> Profile</a>
             <a href="/logout" class="btn btn-sm btn-outline-danger">Logout</a>
         </div>
     </div>
@@ -51,21 +51,21 @@ $invoices_res = $invoices->get_result();
             <div class="stat-card">
                 <div class="text-muted small mb-2">Available Balance</div>
                 <h2 class="fw-bold">₦<?php echo number_format($balance, 2); ?></h2>
-                <a href="/user/billing" class="btn btn-sm btn-primary mt-2">Add Funds</a>
+                <a href="/client/billing" class="btn btn-sm btn-primary mt-2">Add Funds</a>
             </div>
         </div>
         <div class="col-md-4">
             <div class="stat-card">
                 <div class="text-muted small mb-2">Active Services</div>
                 <h2 class="fw-bold">0</h2>
-                <a href="/user/services" class="btn btn-sm btn-outline-primary mt-2">View Services</a>
+                <a href="/client/services" class="btn btn-sm btn-outline-primary mt-2">View Services</a>
             </div>
         </div>
         <div class="col-md-4">
             <div class="stat-card">
                 <div class="text-muted small mb-2">Unpaid Invoices</div>
                 <h2 class="fw-bold">0</h2>
-                <a href="/user/billing" class="btn btn-sm btn-outline-danger mt-2">Pay Now</a>
+                <a href="/client/billing" class="btn btn-sm btn-outline-danger mt-2">Pay Now</a>
             </div>
         </div>
     </div>
@@ -107,13 +107,13 @@ $invoices_res = $invoices->get_result();
             <div class="card p-4">
                 <h5 class="mb-3">Quick Actions</h5>
                 <div class="list-group list-group-flush">
-                    <a href="/user/services" class="list-group-item list-group-item-action border-0 px-0">
+                    <a href="/client/services" class="list-group-item list-group-item-action border-0 px-0">
                         <i class="bi bi-plus-circle me-2 text-primary"></i> Order New Service
                     </a>
-                    <a href="/user/domains" class="list-group-item list-group-item-action border-0 px-0">
+                    <a href="/client/domains" class="list-group-item list-group-item-action border-0 px-0">
                         <i class="bi bi-globe me-2 text-primary"></i> Register Domain
                     </a>
-                    <a href="/user/support" class="list-group-item list-group-item-action border-0 px-0">
+                    <a href="/client/support" class="list-group-item list-group-item-action border-0 px-0">
                         <i class="bi bi-headset me-2 text-primary"></i> Open Ticket
                     </a>
                 </div>
