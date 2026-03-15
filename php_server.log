@@ -1,104 +1,67 @@
-[Fri Mar 13 18:26:53 2026] PHP 8.3.6 Development Server (http://localhost:8000) started
-[Fri Mar 13 18:27:21 2026] [::1]:54876 Accepted
-[Fri Mar 13 18:27:21 2026] [::1]:54876 [200]: GET /install/index.php?step=1
-[Fri Mar 13 18:27:21 2026] [::1]:54876 Closing
-[Fri Mar 13 18:27:22 2026] [::1]:54892 Accepted
-[Fri Mar 13 18:27:22 2026] [::1]:54892 [200]: GET /install/index.php?step=2
-[Fri Mar 13 18:27:22 2026] [::1]:54892 Closing
-[Fri Mar 13 18:32:22 2026] [::1]:38508 Accepted
-[Fri Mar 13 18:32:22 2026] PHP Warning:  require_once(/app/auth.php): Failed to open stream: No such file or directory in /app/login.php on line 2
-[Fri Mar 13 18:32:22 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/app/auth.php' (include_path='.:/usr/share/php') in /app/login.php:2
-Stack trace:
-#0 {main}
-  thrown in /app/login.php on line 2
-[Fri Mar 13 18:32:22 2026] [::1]:38508 [500]: GET /login.php - Uncaught Error: Failed opening required '/app/auth.php' (include_path='.:/usr/share/php') in /app/login.php:2
-Stack trace:
-#0 {main}
-  thrown in /app/login.php on line 2
-[Fri Mar 13 18:32:22 2026] [::1]:38508 Closing
-[Fri Mar 13 18:32:23 2026] [::1]:38520 Accepted
-[Fri Mar 13 18:32:23 2026] PHP Warning:  require_once(/app/user.php): Failed to open stream: No such file or directory in /app/register.php on line 2
-[Fri Mar 13 18:32:23 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/app/user.php' (include_path='.:/usr/share/php') in /app/register.php:2
-Stack trace:
-#0 {main}
-  thrown in /app/register.php on line 2
-[Fri Mar 13 18:32:23 2026] [::1]:38520 [500]: GET /register.php - Uncaught Error: Failed opening required '/app/user.php' (include_path='.:/usr/share/php') in /app/register.php:2
-Stack trace:
-#0 {main}
-  thrown in /app/register.php on line 2
-[Fri Mar 13 18:32:23 2026] [::1]:38520 Closing
-[Fri Mar 13 18:35:34 2026] [::1]:42970 Accepted
-[Fri Mar 13 18:35:34 2026] PHP Warning:  require_once(/app/auth.php): Failed to open stream: No such file or directory in /app/login.php on line 2
-[Fri Mar 13 18:35:34 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/app/auth.php' (include_path='.:/usr/share/php') in /app/login.php:2
-Stack trace:
-#0 {main}
-  thrown in /app/login.php on line 2
-[Fri Mar 13 18:35:34 2026] [::1]:42970 [500]: GET /login.php - Uncaught Error: Failed opening required '/app/auth.php' (include_path='.:/usr/share/php') in /app/login.php:2
-Stack trace:
-#0 {main}
-  thrown in /app/login.php on line 2
-[Fri Mar 13 18:35:34 2026] [::1]:42970 Closing
-[Fri Mar 13 18:35:34 2026] [::1]:42976 Accepted
-[Fri Mar 13 18:35:34 2026] PHP Warning:  require_once(/app/user.php): Failed to open stream: No such file or directory in /app/register.php on line 2
-[Fri Mar 13 18:35:34 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/app/user.php' (include_path='.:/usr/share/php') in /app/register.php:2
-Stack trace:
-#0 {main}
-  thrown in /app/register.php on line 2
-[Fri Mar 13 18:35:34 2026] [::1]:42976 [500]: GET /register.php - Uncaught Error: Failed opening required '/app/user.php' (include_path='.:/usr/share/php') in /app/register.php:2
-Stack trace:
-#0 {main}
-  thrown in /app/register.php on line 2
-[Fri Mar 13 18:35:34 2026] [::1]:42976 Closing
-[Fri Mar 13 18:38:45 2026] [::1]:46330 Accepted
-[Fri Mar 13 18:38:45 2026] [::1]:46330 [200]: GET /login.php
-[Fri Mar 13 18:38:45 2026] [::1]:46330 Closing
-[Fri Mar 13 18:38:45 2026] [::1]:46334 Accepted
-[Fri Mar 13 18:38:45 2026] [::1]:46334 [200]: GET /register.php
-[Fri Mar 13 18:38:45 2026] [::1]:46334 Closing
-[Sat Mar 14 13:33:50 2026] [::1]:55848 Accepted
-[Sat Mar 14 13:33:50 2026] [::1]:55848 [302]: GET /login
-[Sat Mar 14 13:33:50 2026] [::1]:55848 Closing
-[Sat Mar 14 13:33:50 2026] [::1]:55850 Accepted
-[Sat Mar 14 13:33:50 2026] [::1]:55850 [200]: GET /install/
-[Sat Mar 14 13:33:50 2026] [::1]:55850 Closing
-[Sat Mar 14 13:33:50 2026] [::1]:55860 Accepted
-[Sat Mar 14 13:33:50 2026] PHP Warning:  require_once(/app/includes/config.php): Failed to open stream: No such file or directory in /app/includes/auth.php on line 3
-[Sat Mar 14 13:33:50 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/app/includes/config.php' (include_path='.:/usr/share/php') in /app/includes/auth.php:3
-Stack trace:
-#0 /app/client/index.php(2): require_once()
-#1 {main}
-  thrown in /app/includes/auth.php on line 3
-[Sat Mar 14 13:33:50 2026] [::1]:55860 [500]: GET /client/index - Uncaught Error: Failed opening required '/app/includes/config.php' (include_path='.:/usr/share/php') in /app/includes/auth.php:3
-Stack trace:
-#0 /app/client/index.php(2): require_once()
-#1 {main}
-  thrown in /app/includes/auth.php on line 3
-[Sat Mar 14 13:33:50 2026] [::1]:55860 Closing
-[Sat Mar 14 13:33:50 2026] [::1]:55864 Accepted
-[Sat Mar 14 13:33:50 2026] PHP Warning:  require_once(/app/includes/config.php): Failed to open stream: No such file or directory in /app/includes/auth.php on line 3
-[Sat Mar 14 13:33:50 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/app/includes/config.php' (include_path='.:/usr/share/php') in /app/includes/auth.php:3
-Stack trace:
-#0 /app/admin/index.php(2): require_once()
-#1 {main}
-  thrown in /app/includes/auth.php on line 3
-[Sat Mar 14 13:33:50 2026] [::1]:55864 [500]: GET /admin/security - Uncaught Error: Failed opening required '/app/includes/config.php' (include_path='.:/usr/share/php') in /app/includes/auth.php:3
-Stack trace:
-#0 /app/admin/index.php(2): require_once()
-#1 {main}
-  thrown in /app/includes/auth.php on line 3
-[Sat Mar 14 13:33:50 2026] [::1]:55864 Closing
-[Sat Mar 14 13:36:52 2026] [::1]:47428 Accepted
-[Sat Mar 14 13:36:52 2026] [::1]:47428 [404]: GET /login
-[Sat Mar 14 13:36:52 2026] [::1]:47428 Closing
-[Sat Mar 14 13:36:52 2026] [::1]:47444 Accepted
-[Sat Mar 14 13:36:52 2026] [::1]:47444 [302]: GET /client/index
-[Sat Mar 14 13:36:52 2026] [::1]:47444 Closing
-[Sat Mar 14 13:36:52 2026] [::1]:47448 Accepted
-[Sat Mar 14 13:36:52 2026] [::1]:47448 [404]: GET /login
-[Sat Mar 14 13:36:52 2026] [::1]:47448 Closing
-[Sat Mar 14 13:36:52 2026] [::1]:47460 Accepted
-[Sat Mar 14 13:36:52 2026] [::1]:47460 [302]: GET /admin/security
-[Sat Mar 14 13:36:52 2026] [::1]:47460 Closing
-[Sat Mar 14 13:36:52 2026] [::1]:47464 Accepted
-[Sat Mar 14 13:36:52 2026] [::1]:47464 [404]: GET /login
-[Sat Mar 14 13:36:52 2026] [::1]:47464 Closing
+[Sun Mar 15 19:40:55 2026] PHP 8.3.6 Development Server (http://localhost:8080) started
+[Sun Mar 15 19:40:57 2026] [::1]:43138 Accepted
+[Sun Mar 15 19:40:57 2026] [::1]:43138 [302]: HEAD /
+[Sun Mar 15 19:40:57 2026] [::1]:43138 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59624 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59624 [302]: GET /
+[Sun Mar 15 19:44:15 2026] [::1]:59624 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59636 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59636 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59636 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59652 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59652 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59652 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59656 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59656 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59656 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59670 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59670 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59670 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59684 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59684 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59684 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59696 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59696 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59696 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59706 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59706 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59706 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59710 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59710 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59710 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59718 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59718 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59718 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59726 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59726 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59726 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59728 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59728 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59728 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59738 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59738 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59738 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59742 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59742 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59742 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59756 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59756 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59756 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59770 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59770 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59770 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59784 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59784 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59784 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59798 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59798 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59798 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59800 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59800 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59800 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59816 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59816 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59816 Closing
+[Sun Mar 15 19:45:42 2026] [::1]:40472 Accepted
+[Sun Mar 15 19:45:42 2026] [::1]:40472 [200]: GET /migrate/install/
+[Sun Mar 15 19:45:42 2026] [::1]:40472 Closing
