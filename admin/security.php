@@ -8,11 +8,22 @@ if (!$auth->isLoggedIn() || !$auth->isAdmin()) {
 $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['action']) && $_POST['action'] === 'add_blacklist_ip') {
-        $ip = $_POST['ip'];
-        $stmt = $db->prepare("INSERT INTO ip_protection (ip_address, status, block_until) VALUES (?, 'blacklist', DATE_ADD(NOW(), INTERVAL 1 YEAR)) ON DUPLICATE KEY UPDATE status='blacklist', block_until=DATE_ADD(NOW(), INTERVAL 1 YEAR)");
-        $stmt->bind_param("s", $ip);
-        $stmt->execute();
+    if (isset($_POST['action'])) {
+        if ($_POST['action'] === 'add_blacklist_ip') {
+            $ip = $_POST['ip'];
+            $stmt = $db->prepare("INSERT INTO ip_protection (ip_address, status, block_until) VALUES (?, 'blacklist', DATE_ADD(NOW(), INTERVAL 1 YEAR)) ON DUPLICATE KEY UPDATE status='blacklist', block_until=DATE_ADD(NOW(), INTERVAL 1 YEAR)");
+            $stmt->bind_param("s", $ip);
+            $stmt->execute();
+        } elseif ($_POST['action'] === 'update_country') {
+            $code = $_POST['country_code'];
+            $status = $_POST['status'];
+            $stmt = $db->prepare("UPDATE country_protection SET status = ? WHERE country_code = ?");
+            $stmt->bind_param("ss", $status, $code);
+            $stmt->execute();
+            header('Content-Type: application/json');
+            echo json_encode(['success' => true]);
+            exit;
+        }
     }
 }
 
@@ -93,7 +104,7 @@ $countries = $db->query("SELECT * FROM country_protection ORDER BY country_name 
                                 <td><?php echo htmlspecialchars($ip['ip_address']); ?></td>
                                 <td>
                                     <?php if($ip['status'] === 'whitelist'): ?>
-                                        <span class="badge bg-success">Whitelisted</span>
+                                        <span class="badge bg-success" title="King/Recognized IP"><i class="bi bi-crown-fill text-warning"></i> Whitelisted</span>
                                     <?php elseif($ip['status'] === 'blacklist'): ?>
                                         <span class="badge bg-danger">Blacklisted</span>
                                     <?php else: ?>
@@ -129,7 +140,7 @@ $countries = $db->query("SELECT * FROM country_protection ORDER BY country_name 
                             <tr>
                                 <td><?php echo htmlspecialchars($country['country_name']); ?></td>
                                 <td>
-                                    <select class="form-select form-select-sm">
+                                    <select class="form-select form-select-sm" onchange="updateCountry('<?php echo $country['country_code']; ?>', this.value)">
                                         <option value="not_specified" <?php echo $country['status'] === 'not_specified' ? 'selected' : ''; ?>>Not Specified</option>
                                         <option value="whitelisted" <?php echo $country['status'] === 'whitelisted' ? 'selected' : ''; ?>>Whitelisted</option>
                                         <option value="blacklisted" <?php echo $country['status'] === 'blacklisted' ? 'selected' : ''; ?>>Blacklisted</option>
@@ -156,6 +167,15 @@ document.getElementById('countrySearch').addEventListener('keyup', function() {
         }
     }
 });
+function updateCountry(code, status) {
+    fetch('/admin/security', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: `action=update_country&country_code=${code}&status=${status}`
+    }).then(res => res.json()).then(data => {
+        if(!data.success) alert('Failed to update country status');
+    });
+}
 </script>
 </body>
 </html>
