@@ -2,7 +2,17 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php';
+$autoload_path = dirname(__DIR__) . '/vendor/autoload.php';
+if (file_exists($autoload_path)) {
+    require_once $autoload_path;
+} else {
+    // Fallback if the path above is still not correct in some environments
+    $fallback_path = __DIR__ . '/../vendor/autoload.php';
+    if (file_exists($fallback_path)) {
+        require_once $fallback_path;
+    }
+}
+
 require_once __DIR__ . '/config.php';
 
 class Email {
