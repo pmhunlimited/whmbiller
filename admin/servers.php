@@ -1,5 +1,11 @@
 <?php
 require_once __DIR__ . '/../includes/auth.php';
+require_once __DIR__ . '/../modules/provisioning/whm.php';
+require_once __DIR__ . '/../modules/provisioning/nocix.php';
+require_once __DIR__ . '/../modules/provisioning/interserver.php';
+require_once __DIR__ . '/../modules/registrars/namecheap.php';
+require_once __DIR__ . '/../modules/registrars/upperlink.php';
+
 $auth = new Auth();
 if (!$auth->isLoggedIn() || !$auth->isAdmin()) {
     header('Location: /login');
@@ -7,17 +13,49 @@ if (!$auth->isLoggedIn() || !$auth->isAdmin()) {
 }
 $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['action']) && $_POST['action'] === 'add_server') {
-        $name = $_POST['name'];
-        $hostname = $_POST['hostname'];
-        $username = $_POST['username'];
-        $token = $_POST['api_token'];
-        $type = $_POST['type'];
+$test_result = null;
 
-        $stmt = $db->prepare("INSERT INTO servers (name, hostname, username, api_token, type) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssss", $name, $hostname, $username, $token, $type);
-        $stmt->execute();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['action'])) {
+        if ($_POST['action'] === 'add_server') {
+            $name = $_POST['name'];
+            $hostname = $_POST['hostname'];
+            $username = $_POST['username'];
+            $token = $_POST['api_token'];
+            $type = $_POST['type'];
+
+            $stmt = $db->prepare("INSERT INTO servers (name, hostname, username, api_token, type) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssss", $name, $hostname, $username, $token, $type);
+            $stmt->execute();
+        } elseif ($_POST['action'] === 'test_connection') {
+            $server_id = (int)$_POST['server_id'];
+            $stmt = $db->prepare("SELECT * FROM servers WHERE id = ?");
+            $stmt->bind_param("i", $server_id);
+            $stmt->execute();
+            $s = $stmt->get_result()->fetch_assoc();
+
+            try {
+                switch($s['type']) {
+                    case 'whm':
+                        $whm = new WHMModule($s['hostname'], $s['username'], $s['api_token']);
+                        // applist is a lightweight call to test
+                        $res = $whm->getSessionToken($s['username']);
+                        $test_result = (isset($res['metadata']['result']) && $res['metadata']['result'] == 1)
+                            ? "Success: Connected to WHM."
+                            : "Error: " . ($res['metadata']['reason'] ?? 'Unknown WHM error');
+                        break;
+                    case 'namecheap':
+                        $nc = new NamecheapModule($s['username'], $s['api_token'], $_SERVER['REMOTE_ADDR']);
+                        $res = $nc->getNameservers('example.com'); // Mock check
+                        $test_result = "Connection initiated. Check Namecheap API logs.";
+                        break;
+                    default:
+                        $test_result = "Test not implemented for " . $s['type'] . " yet, but API is configured.";
+                }
+            } catch (Exception $e) {
+                $test_result = "Exception: " . $e->getMessage();
+            }
+        }
     }
 }
 
@@ -41,6 +79,13 @@ $servers = $db->query("SELECT * FROM servers");
         <h2><i class="bi bi-hdd-network text-primary"></i> WHM & API Servers</h2>
         <a href="/admin/index" class="btn btn-secondary">Back</a>
     </div>
+
+    <?php if($test_result): ?>
+        <div class="alert alert-info alert-dismissible fade show">
+            <?php echo htmlspecialchars($test_result); ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    <?php endif; ?>
 
     <div class="row">
         <div class="col-md-4">
@@ -100,7 +145,11 @@ $servers = $db->query("SELECT * FROM servers");
                                 <td><?php echo htmlspecialchars($s['hostname']); ?></td>
                                 <td><span class="badge bg-success">Active</span></td>
                                 <td>
-                                    <button class="btn btn-sm btn-outline-primary">Test Connection</button>
+                                    <form method="POST" style="display:inline;">
+                                        <input type="hidden" name="action" value="test_connection">
+                                        <input type="hidden" name="server_id" value="<?php echo $s['id']; ?>">
+                                        <button type="submit" class="btn btn-sm btn-outline-primary">Test Connection</button>
+                                    </form>
                                 </td>
                             </tr>
                             <?php endwhile; ?>

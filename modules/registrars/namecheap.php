@@ -30,12 +30,20 @@ class NamecheapModule {
         return simplexml_load_string($result);
     }
 
+    public function getNameservers($domain) {
+        // domain should be sld.tld
+        $parts = explode('.', $domain);
+        return $this->call('namecheap.domains.dns.getList', [
+            'SLD' => $parts[0] ?? '',
+            'TLD' => $parts[1] ?? ''
+        ]);
+    }
+
     public function registerDomain($sld, $tld, $years = 1) {
         return $this->call('namecheap.domains.create', [
             'Sld' => $sld,
             'Tld' => $tld,
             'Years' => $years,
-            // Additional required contact params would go here
         ]);
     }
 
