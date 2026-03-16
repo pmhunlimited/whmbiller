@@ -1,8 +1,8 @@
 <?php
-// Use manual requiring for maximum compatibility in all environments
-require_once __DIR__ . '/../vendor/phpmailer/phpmailer/src/Exception.php';
-require_once __DIR__ . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require_once __DIR__ . '/../vendor/phpmailer/phpmailer/src/SMTP.php';
+// Use manual requiring for maximum robustness in all environments
+require_once dirname(__DIR__) . '/vendor/phpmailer/phpmailer/src/Exception.php';
+require_once dirname(__DIR__) . '/vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require_once dirname(__DIR__) . '/vendor/phpmailer/phpmailer/src/SMTP.php';
 
 require_once __DIR__ . '/config.php';
 

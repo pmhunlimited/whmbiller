@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/config.php';
 
+// Explicitly require autoloader for Dompdf
 $autoload_path = dirname(__DIR__) . '/vendor/autoload.php';
 if (file_exists($autoload_path)) {
     require_once $autoload_path;
@@ -16,9 +17,6 @@ class Billing {
         $this->db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     }
 
-    /**
-     * Calculate the final retail price for a product.
-     */
     public function calculateFinalPrice($product_id, $reseller_id = null) {
         $stmt = $this->db->prepare("SELECT price FROM products WHERE id = ?");
         $stmt->bind_param("i", $product_id);
@@ -44,6 +42,12 @@ class Billing {
         $stmt->close();
 
         return (float)$public_price;
+    }
+
+    public function markAsPaid($invoice_id) {
+        $stmt = $this->db->prepare("UPDATE invoices SET status = 'paid' WHERE id = ?");
+        $stmt->bind_param("i", $invoice_id);
+        $stmt->execute();
     }
 
     public function generateInvoicePDF($invoice_id) {
@@ -102,7 +106,7 @@ class Billing {
         $dompdf->render();
 
         $output = $dompdf->output();
-        $filepath = dirname(__DIR__) . "/assets/invoices/invoice_{$invoice_id}.pdf";
+        $filepath = __DIR__ . "/../assets/invoices/invoice_{$invoice_id}.pdf";
         if (!is_dir(dirname($filepath))) {
             mkdir(dirname($filepath), 0755, true);
         }
