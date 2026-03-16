@@ -1,5 +1,5 @@
 <?php
-// Manual inclusion of PHPMailer for robustness in varied environments
+// Use manual requiring for maximum compatibility in all environments
 require_once __DIR__ . '/../vendor/phpmailer/phpmailer/src/Exception.php';
 require_once __DIR__ . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require_once __DIR__ . '/../vendor/phpmailer/phpmailer/src/SMTP.php';
