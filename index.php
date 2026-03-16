@@ -5,27 +5,30 @@ if (!file_exists(__DIR__ . '/includes/config.php')) {
 }
 require_once __DIR__ . '/includes/config.php';
 
-// Host Validation for Resellers
+// Host Validation for Resellers (Optimized)
 $host = $_SERVER['HTTP_HOST'];
-try {
-    $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-} catch (mysqli_sql_exception $e) {
-    // If DB connection fails (e.g. after upload but before install), redirect to installer
-    header('Location: /install/');
-    exit;
-}
-$stmt = $db->prepare("SELECT user_id FROM reseller_settings WHERE custom_domain = ?");
-$stmt->bind_param("s", $host);
-$stmt->execute();
-$res = $stmt->get_result();
+$main_domain = 'yourdomain.com'; // Should ideally be in config.php
 
-$is_reseller_domain = ($res->num_rows > 0);
-$main_domain = 'yourdomain.com'; // Should be in settings
+if ($host !== $main_domain) {
+    try {
+        $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        $stmt = $db->prepare("SELECT user_id FROM reseller_settings WHERE custom_domain = ?");
+        $stmt->bind_param("s", $host);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        $is_reseller_domain = ($res->num_rows > 0);
+        $stmt->close();
+        $db->close();
+    } catch (mysqli_sql_exception $e) {
+        header('Location: /install/');
+        exit;
+    }
 
-if ($host !== $main_domain && !$is_reseller_domain) {
-    http_response_code(404);
-    include __DIR__ . '/templates/error_404.php';
-    exit;
+    if (!$is_reseller_domain) {
+        http_response_code(404);
+        include __DIR__ . '/templates/error_404.php';
+        exit;
+    }
 }
 
 // Proceed to normal routing
@@ -38,7 +41,6 @@ if ($auth->isLoggedIn()) {
         header('Location: /client/index');
     }
 } else {
-    // If accessing via /admin path but not logged in
     if (strpos($_SERVER['REQUEST_URI'], '/admin') !== false) {
         header('Location: /admin/authorize');
     } else {
