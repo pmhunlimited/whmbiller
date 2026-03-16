@@ -1,23 +1,22 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-$autoload_path = dirname(__DIR__) . '/vendor/autoload.php';
-if (file_exists($autoload_path)) {
-    require_once $autoload_path;
-} else {
-    // Fallback if the path above is still not correct in some environments
-    $fallback_path = __DIR__ . '/../vendor/autoload.php';
-    if (file_exists($fallback_path)) {
-        require_once $fallback_path;
-    }
-}
+// Use manual requiring for maximum compatibility in all environments
+require_once __DIR__ . '/../vendor/phpmailer/phpmailer/src/Exception.php';
+require_once __DIR__ . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require_once __DIR__ . '/../vendor/phpmailer/phpmailer/src/SMTP.php';
 
 require_once __DIR__ . '/config.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class Email {
     public static function send($to, $subject, $body) {
         $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        if ($db->connect_error) {
+            error_log("Email DB connection failed: " . $db->connect_error);
+            return false;
+        }
+
         $settings = [];
         $res = $db->query("SELECT * FROM settings WHERE setting_key LIKE 'smtp_%'");
         while($row = $res->fetch_assoc()) {
@@ -45,6 +44,8 @@ class Email {
         } catch (Exception $e) {
             error_log("Email failed: " . $mail->ErrorInfo);
             return false;
+        } finally {
+            $db->close();
         }
     }
 }
