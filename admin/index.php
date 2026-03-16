@@ -37,7 +37,10 @@ if (!$auth->isLoggedIn() || !$auth->isAdmin()) {
                 <a class="nav-link active" href="/admin/index"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a>
                 <a class="nav-link" href="/admin/clients"><i class="bi bi-people me-2"></i> Clients</a>
                 <a class="nav-link" href="/admin/products"><i class="bi bi-box-seam me-2"></i> Products</a>
+                <a class="nav-link" href="/admin/servers"><i class="bi bi-hdd-network me-2"></i> WHM Servers</a>
                 <a class="nav-link" href="/admin/invoices"><i class="bi bi-file-earmark-text me-2"></i> Invoices</a>
+                <a class="nav-link" href="/admin/payments"><i class="bi bi-cash-stack me-2"></i> Payments</a>
+                <a class="nav-link" href="/admin/resellers"><i class="bi bi-shop me-2"></i> Resellers</a>
                 <a class="nav-link" href="/admin/security"><i class="bi bi-shield-check me-2"></i> Security</a>
                 <a class="nav-link" href="/admin/settings"><i class="bi bi-gear me-2"></i> Settings</a>
                 <a class="nav-link text-danger" href="/logout"><i class="bi bi-box-arrow-right me-2"></i> Logout</a>
@@ -110,7 +113,7 @@ if (!$auth->isLoggedIn() || !$auth->isAdmin()) {
                                         <td>
                                             <?php echo htmlspecialchars($log['ip_address']); ?>
                                             <?php if ($log['ip_status'] === 'whitelist' || $log['successful_sessions'] >= 5): ?>
-                                                <i class="bi bi-award king-icon" title="Whitelisted/Trusted IP"></i>
+                                                <i class="bi bi-award-fill king-icon" title="Whitelisted/Trusted IP"></i>
                                             <?php endif; ?>
                                         </td>
                                         <td>
