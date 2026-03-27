@@ -168,7 +168,10 @@ if ($step === 1) {
                 throw new Exception("Connection failed: " . $conn->connect_error);
             }
 
-            $stmt = $conn->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, 'admin')");
+            $stmt = $conn->prepare("INSERT INTO tblclients (username, email, password, role) VALUES (?, ?, ?, 'admin')");
+            if (!$stmt) {
+                throw new Exception("Preparation failed: " . $conn->error);
+            }
             $stmt->bind_param("sss", $user, $email, $pass);
             if (!$stmt->execute()) {
                 throw new Exception("Error creating admin account: " . $stmt->error);

@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $ip = $_POST['ip'];
         $duration = $_POST['duration'] ?? '1 day';
         $block_until = date('Y-m-d H:i:s', strtotime('+' . $duration));
-        $stmt = $db->prepare("INSERT INTO ip_protection (ip_address, status, block_until) VALUES (?, 'blacklist', ?) ON DUPLICATE KEY UPDATE status='blacklist', block_until=?");
+        $stmt = $db->prepare("INSERT INTO tblipblocks (ip_address, status, block_until) VALUES (?, 'blacklist', ?) ON DUPLICATE KEY UPDATE status='blacklist', block_until=?");
         $stmt->bind_param("sss", $ip, $block_until, $block_until);
         $stmt->execute();
         $msg = "IP $ip blacklisted for $duration.";
@@ -31,14 +31,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } elseif ($action === 'suspend_user') {
         $username = $_POST['username'];
-        $stmt = $db->prepare("UPDATE users SET status = 'suspended' WHERE username = ?");
+        $stmt = $db->prepare("UPDATE tblclients SET status = 'Inactive' WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $msg = "User $username suspended.";
     }
 }
 
-$ips = $db->query("SELECT * FROM ip_protection ORDER BY last_attempt DESC");
+$ips = $db->query("SELECT * FROM tblipblocks ORDER BY last_attempt DESC");
 $countries = $db->query("SELECT * FROM country_protection ORDER BY country_name ASC");
 ?>
 <!DOCTYPE html>
@@ -114,9 +114,9 @@ $countries = $db->query("SELECT * FROM country_protection ORDER BY country_name 
                         <input type="text" name="ip" class="form-control form-control-sm me-2" placeholder="IP Address" required>
                         <select name="duration" class="form-select form-select-sm me-2" style="width: auto;">
                             <option value="1 day">1 Day</option>
-                            <option value="1 week">1 Week</option>
-                            <option value="1 month">1 Month</option>
-                            <option value="1 year">1 Year</option>
+                            <option value="1 week">One Week</option>
+                            <option value="1 month">One Month</option>
+                            <option value="1 year">One Year</option>
                         </select>
                         <button type="submit" class="btn btn-sm btn-danger text-nowrap">Block IP</button>
                     </form>
@@ -230,7 +230,6 @@ document.querySelectorAll('.country-status').forEach(select => {
         .then(response => response.json())
         .then(data => {
             if(data.status === 'success') {
-                // Flash effect
                 this.classList.add('is-valid');
                 setTimeout(() => this.classList.remove('is-valid'), 1000);
             }
