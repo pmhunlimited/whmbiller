@@ -11,38 +11,24 @@ class Auth {
     }
 
     public function __destruct() {
-        if ($this->db) {
-            $this->db->close();
-        }
+        if ($this->db) $this->db->close();
     }
 
     public function login($username, $password, $admin_only = false) {
         $ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
         $security = new Security($this->db);
 
-        if ($security->isIPBlocked($ip)) {
-            return "Your IP is currently blocked.";
-        }
+        if ($security->isIPBlocked($ip)) return "Your IP is currently blocked.";
+        if ($security->isUserSuspended($username)) return "This account has been suspended.";
 
-        if ($security->isUserSuspended($username)) {
-            return "This account has been suspended.";
-        }
-
-        if ($security->checkCountryBlock($ip)) {
-            return "Access restricted.";
-        }
-
-        $stmt = $this->db->prepare("SELECT id, username, email, password, role, status FROM users WHERE username = ?");
+        $stmt = $this->db->prepare("SELECT id, username, email, password, role, status FROM tblclients WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
-        $res = $stmt->get_result();
-        $user = $res->fetch_assoc();
+        $user = $stmt->get_result()->fetch_assoc();
         $stmt->close();
 
         if ($user) {
-            if ($admin_only && !in_array($user['role'], ['admin', 'staff'])) {
-                return "Access denied.";
-            }
+            if ($admin_only && !in_array($user['role'], ['admin', 'staff'])) return "Access denied.";
 
             if (password_verify($password, $user['password'])) {
                 if ($user['role'] === 'admin') {
@@ -51,7 +37,6 @@ class Auth {
                         Email::send($user['email'], 'Admin Login Notification', "New login from IP: $ip.");
                     }
                 }
-
                 $security->logLoginAttempt($username, $ip, 'success');
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
@@ -59,7 +44,6 @@ class Auth {
                 return true;
             }
         }
-
         $security->logLoginAttempt($username, $ip, 'failed');
         return "Invalid username or password.";
     }
@@ -69,11 +53,6 @@ class Auth {
         return true;
     }
 
-    public function isLoggedIn() {
-        return isset($_SESSION['user_id']);
-    }
-
-    public function isAdmin() {
-        return isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
-    }
+    public function isLoggedIn() { return isset($_SESSION['user_id']); }
+    public function isAdmin() { return isset($_SESSION['role']) && $_SESSION['role'] === 'admin'; }
 }
