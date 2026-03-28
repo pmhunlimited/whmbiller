@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Ensure we use the root folder
+RewriteBase /
+
+# Hide .php extension
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# External redirects for convenience
+RewriteRule ^admin$ admin/index [R=301,L]
+RewriteRule ^client$ client/index [R=301,L]

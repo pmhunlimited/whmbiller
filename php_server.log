@@ -1,0 +1,134 @@
+[Sun Mar 15 19:40:55 2026] PHP 8.3.6 Development Server (http://localhost:8080) started
+[Sun Mar 15 19:40:57 2026] [::1]:43138 Accepted
+[Sun Mar 15 19:40:57 2026] [::1]:43138 [302]: HEAD /
+[Sun Mar 15 19:40:57 2026] [::1]:43138 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59624 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59624 [302]: GET /
+[Sun Mar 15 19:44:15 2026] [::1]:59624 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59636 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59636 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59636 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59652 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59652 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59652 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59656 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59656 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59656 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59670 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59670 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59670 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59684 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59684 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59684 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59696 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59696 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59696 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59706 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59706 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59706 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59710 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59710 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59710 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59718 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59718 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59718 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59726 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59726 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59726 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59728 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59728 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59728 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59738 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59738 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59738 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59742 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59742 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59742 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59756 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59756 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59756 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59770 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59770 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59770 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59784 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59784 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59784 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59798 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59798 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59798 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59800 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59800 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59800 Closing
+[Sun Mar 15 19:44:15 2026] [::1]:59816 Accepted
+[Sun Mar 15 19:44:15 2026] [::1]:59816 [302]: GET /install/
+[Sun Mar 15 19:44:15 2026] [::1]:59816 Closing
+[Sun Mar 15 19:45:42 2026] [::1]:40472 Accepted
+[Sun Mar 15 19:45:42 2026] [::1]:40472 [200]: GET /migrate/install/
+[Sun Mar 15 19:45:42 2026] [::1]:40472 Closing
+[Mon Mar 16 03:34:14 2026] [::1]:44418 Accepted
+[Mon Mar 16 03:34:14 2026] PHP Warning:  require_once(/app/includes/config.php): Failed to open stream: No such file or directory in /app/includes/auth.php on line 3
+[Mon Mar 16 03:34:14 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/app/includes/config.php' (include_path='.:/usr/share/php') in /app/includes/auth.php:3
+Stack trace:
+#0 /app/admin/index.php(2): require_once()
+#1 {main}
+  thrown in /app/includes/auth.php on line 3
+[Mon Mar 16 03:34:14 2026] [::1]:44418 [500]: GET /admin/index - Uncaught Error: Failed opening required '/app/includes/config.php' (include_path='.:/usr/share/php') in /app/includes/auth.php:3
+Stack trace:
+#0 /app/admin/index.php(2): require_once()
+#1 {main}
+  thrown in /app/includes/auth.php on line 3
+[Mon Mar 16 03:34:14 2026] [::1]:44418 Closing
+[Fri Mar 27 02:13:24 2026] [::1]:53362 Accepted
+[Fri Mar 27 02:13:24 2026] PHP Warning:  require_once(/app/includes/config.php): Failed to open stream: No such file or directory in /app/includes/auth.php on line 3
+[Fri Mar 27 02:13:24 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/app/includes/config.php' (include_path='.:/usr/share/php') in /app/includes/auth.php:3
+Stack trace:
+#0 /app/admin/index.php(2): require_once()
+#1 {main}
+  thrown in /app/includes/auth.php on line 3
+[Fri Mar 27 02:13:24 2026] [::1]:53362 [500]: GET /admin/index - Uncaught Error: Failed opening required '/app/includes/config.php' (include_path='.:/usr/share/php') in /app/includes/auth.php:3
+Stack trace:
+#0 /app/admin/index.php(2): require_once()
+#1 {main}
+  thrown in /app/includes/auth.php on line 3
+[Fri Mar 27 02:13:24 2026] [::1]:53362 Closing
+[Fri Mar 27 02:13:24 2026] [::1]:53366 Accepted
+[Fri Mar 27 02:13:24 2026] PHP Warning:  require_once(/app/includes/config.php): Failed to open stream: No such file or directory in /app/includes/auth.php on line 3
+[Fri Mar 27 02:13:24 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/app/includes/config.php' (include_path='.:/usr/share/php') in /app/includes/auth.php:3
+Stack trace:
+#0 /app/client/index.php(2): require_once()
+#1 {main}
+  thrown in /app/includes/auth.php on line 3
+[Fri Mar 27 02:13:24 2026] [::1]:53366 [500]: GET /client/knowledgebase - Uncaught Error: Failed opening required '/app/includes/config.php' (include_path='.:/usr/share/php') in /app/includes/auth.php:3
+Stack trace:
+#0 /app/client/index.php(2): require_once()
+#1 {main}
+  thrown in /app/includes/auth.php on line 3
+[Fri Mar 27 02:13:24 2026] [::1]:53366 Closing
+[Fri Mar 27 02:22:26 2026] [::1]:57556 Accepted
+[Fri Mar 27 02:22:26 2026] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' in /app/includes/auth.php:10
+Stack trace:
+#0 /app/includes/auth.php(10): mysqli->__construct()
+#1 /app/admin/index.php(3): Auth->__construct()
+#2 {main}
+  thrown in /app/includes/auth.php on line 10
+[Fri Mar 27 02:22:26 2026] [::1]:57556 [500]: GET /admin/index - Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' in /app/includes/auth.php:10
+Stack trace:
+#0 /app/includes/auth.php(10): mysqli->__construct()
+#1 /app/admin/index.php(3): Auth->__construct()
+#2 {main}
+  thrown in /app/includes/auth.php on line 10
+[Fri Mar 27 02:22:26 2026] [::1]:57556 Closing
+[Fri Mar 27 02:22:26 2026] [::1]:57564 Accepted
+[Fri Mar 27 02:22:26 2026] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' in /app/includes/auth.php:10
+Stack trace:
+#0 /app/includes/auth.php(10): mysqli->__construct()
+#1 /app/client/index.php(3): Auth->__construct()
+#2 {main}
+  thrown in /app/includes/auth.php on line 10
+[Fri Mar 27 02:22:26 2026] [::1]:57564 [500]: GET /client/knowledgebase - Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' in /app/includes/auth.php:10
+Stack trace:
+#0 /app/includes/auth.php(10): mysqli->__construct()
+#1 /app/client/index.php(3): Auth->__construct()
+#2 {main}
+  thrown in /app/includes/auth.php on line 10
+[Fri Mar 27 02:22:26 2026] [::1]:57564 Closing
